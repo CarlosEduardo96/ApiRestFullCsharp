@@ -9,10 +9,18 @@ using ApiRestFullCsharp.DTOs;
 
 namespace ApiRestFullCsharp.Controllers
 {
-    [Route("api/[controller]")]
+    
+    [Route("api/[controller]")]    
     [ApiController]
     public class PersonaController : ControllerBase
     {
+
+        /// <summary>
+        /// Trae todos los registros de personas
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Success</response>
+        /// <response code="400">No se encontraron resultados</response>
         [HttpGet]
         public IActionResult SelectAll() {
             PersonaDTO p = new PersonaDTO();
@@ -36,6 +44,13 @@ namespace ApiRestFullCsharp.Controllers
             
         }
 
+        /// <summary>
+        /// Trae datos de la persona por id
+        /// </summary>        
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Success</response>
+        /// <response code="400">No se encontraron resultados</response>
         [HttpPost("ById")]
         public IActionResult SelectById(int id) {
             PersonaDTO select = new PersonaDTO();
@@ -58,6 +73,13 @@ namespace ApiRestFullCsharp.Controllers
             }
         }
 
+        /// <summary>
+        /// Trae datos de la persona por nombre
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <response code="200">Success</response>
+        /// <response code="400">No se encontraron resultados</response>
         [HttpPost("ByName")]
         public IActionResult SelectByName(string name) {
             PersonaDTO p = new PersonaDTO();
@@ -78,7 +100,13 @@ namespace ApiRestFullCsharp.Controllers
                 return BadRequest(pack);
             }
         }
-
+        /// <summary>
+        /// Registra a una nueva pernosa
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        /// <response code="200">Success</response>
+        /// <response code="400">No se encontraron resultados</response>
         [HttpPut("create")]
         public IActionResult Create(PersonaModel p) {
             
@@ -95,6 +123,13 @@ namespace ApiRestFullCsharp.Controllers
             return Ok(paquete);
         }
 
+        /// <summary>
+        /// Elimina a la persona por su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Success</response>
+        /// <response code="400">No se encontraron resultados</response>
         [HttpDelete("delete")]
         public IActionResult Delete(int id) {
 
@@ -118,7 +153,14 @@ namespace ApiRestFullCsharp.Controllers
                 return BadRequest(paquete);
             }
         }
-
+        /// <summary>
+        /// Actualiza datos de la persona por su id,
+        /// Devuelve un mensaje de error si la persona no esta registrada
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        /// <response code="200">Success</response>
+        /// <response code="400">No se encontraron resultados</response>
         [HttpPost("edit")]
         public IActionResult Update(PersonaModel request) {
             PersonaDTO persona = new PersonaDTO();

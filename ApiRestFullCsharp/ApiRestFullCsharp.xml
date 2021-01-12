@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiRestFullCsharp</name>
+    </assembly>
+    <members>
+        <member name="M:ApiRestFullCsharp.Controllers.PersonaController.SelectAll">
+            <summary>
+            Trae todos los registros de personas
+            </summary>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.PersonaController.SelectById(System.Int32)">
+            <summary>
+            Trae datos de la persona por id
+            </summary>        
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.PersonaController.SelectByName(System.String)">
+            <summary>
+            Trae datos de la persona por nombre
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.PersonaController.Create(ApiRestFullCsharp.Models.PersonaModel)">
+            <summary>
+            Registra a una nueva pernosa
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.PersonaController.Delete(System.Int32)">
+            <summary>
+            Elimina a la persona por su id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.PersonaController.Update(ApiRestFullCsharp.Models.PersonaModel)">
+            <summary>
+            Actualiza datos de la persona por su id,
+            Devuelve un mensaje de error si la persona no esta registrada
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+    </members>
+</doc>

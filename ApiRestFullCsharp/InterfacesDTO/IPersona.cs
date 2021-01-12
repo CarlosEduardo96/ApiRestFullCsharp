@@ -13,6 +13,6 @@ namespace ApiRestFullCsharp.InterfacesDTO
         public List<PersonaModel> SelectByName(string name);
         public PersonaModel Insert(PersonaModel P);
         public PersonaModel Delete(int id);
-        public PersonaModel Update(Models.PersonaModel p);
+        public PersonaModel Update(PersonaModel p);
     }
 }
