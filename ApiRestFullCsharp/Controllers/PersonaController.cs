@@ -29,7 +29,8 @@ namespace ApiRestFullCsharp.Controllers
             }
             else {
                 pack.status = 400;
-                pack.msn = "No se encontraron resultados";               
+                pack.msn = "No se encontraron resultados";
+                pack.data = null;
                 return BadRequest(pack);
             }            
             
@@ -68,6 +69,7 @@ namespace ApiRestFullCsharp.Controllers
                 pack.status = 200;
                 pack.msn = "Success";
                 pack.data = lista.ToArray();
+
                 return Ok(pack);
             }
             else {
@@ -109,7 +111,7 @@ namespace ApiRestFullCsharp.Controllers
                 paquete.msn = "Success";
                 paquete.data = data.ToArray();
                 return Ok(paquete);
-            }
+        }
             else {
                 paquete.status = 400;
                 paquete.msn = "El id "+id+" no esta registrado";

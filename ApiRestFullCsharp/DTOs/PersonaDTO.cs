@@ -18,7 +18,7 @@ namespace ApiRestFullCsharp.DTOs
         public PersonaDTO() { }
 
         public PersonaModel Delete(int id)
-        {            
+        {
             PersonaModel p = SelectById(id);
             if ( p!= null)
             {
@@ -27,8 +27,8 @@ namespace ApiRestFullCsharp.DTOs
                 command = new MySqlCommand(sql, conn);
                 command.ExecuteNonQuery();               
                 Desconectar();
-            }          
-            
+        }
+
             return p;
         }
 
