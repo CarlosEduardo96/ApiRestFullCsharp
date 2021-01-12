@@ -4,6 +4,65 @@
         <name>ApiRestFullCsharp</name>
     </assembly>
     <members>
+        <member name="T:ApiRestFullCsharp.Controllers.CarteraController">
+            <summary>
+            Trae registros con base a las carteras del cliente
+            </summary>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.CarteraController.SelectAll">
+            <summary>
+            Trae todas las carteras registradas
+            </summary>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="240">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.CarteraController.SelectById(System.Int32)">
+            <summary>
+            Trae el registro de cartera por el id
+            </summary>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.CarteraController.SelectByForeingKey(System.Int32)">
+            <summary>
+            Trae el registro de la cartera por el id de la persona
+            </summary>
+            <param name="ForeingKey"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.CarteraController.Delete(System.Int32)">
+            <summary>
+            Elimina la cartera por medio de su id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Success</response>
+            <response code="400">No existe el registro</response>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.CarteraController.Create(ApiRestFullCsharp.Models.CarteraModel)">
+            <summary>
+            Crea una cartera nueva
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.Controllers.CarteraController.Update(ApiRestFullCsharp.Models.CarteraModel)">
+            <summary>
+            Actualiza los datos de la cartera del cliente
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ApiRestFullCsharp.Controllers.PersonaController">
+            <summary>
+            Trae los datos de las personas registradas
+            </summary>
+        </member>
         <member name="M:ApiRestFullCsharp.Controllers.PersonaController.SelectAll">
             <summary>
             Trae todos los registros de personas
@@ -57,6 +116,79 @@
             <returns></returns>
             <response code="200">Success</response>
             <response code="400">No se encontraron resultados</response>
+        </member>
+        <member name="T:ApiRestFullCsharp.DTOs.CarteraDTO">
+            <summary>
+            Interactua con la tabla Cartera en la base de datos
+            </summary>
+        </member>
+        <member name="M:ApiRestFullCsharp.DTOs.CarteraDTO.Delete(System.Int32)">
+            <summary>
+            Elimina el resgitro por id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.DTOs.CarteraDTO.Insert(ApiRestFullCsharp.Models.CarteraModel)">
+            <summary>
+            Inserta el registro en la base de datos
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.DTOs.CarteraDTO.SelectAll">
+            <summary>
+            Selecciona todos los registros
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.DTOs.CarteraDTO.SelectById(System.Int32)">
+            <summary>
+            Busca la cartera por su id en la base de datos
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.DTOs.CarteraDTO.SelectByIdForeig(System.Int32)">
+            <summary>
+            Realiza la consulta por la llave foranea
+            </summary>
+            <param name="idForeing"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiRestFullCsharp.DTOs.CarteraDTO.Update(ApiRestFullCsharp.Models.CarteraModel)">
+            <summary>
+            Actualiza el registro en la base de datos
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ApiRestFullCsharp.Models.ConectionModel">
+            <summary>
+            Configuracion de la base de datos
+            </summary>
+        </member>
+        <member name="F:ApiRestFullCsharp.Models.ConectionModel.conn">
+            <summary>
+            Coneccion a la base de datos
+            </summary>
+        </member>
+        <member name="M:ApiRestFullCsharp.Models.ConectionModel.Conectar">
+            <summary>
+            Realiza la coneccion a la base de datos
+            </summary>
+        </member>
+        <member name="M:ApiRestFullCsharp.Models.ConectionModel.Desconectar">
+            <summary>
+            Finaliza la coneccion de la base de datos
+            </summary>
+        </member>
+        <member name="M:ApiRestFullCsharp.Models.ConectionModel.ConsultMultiTable(System.String)">
+            <summary>
+            Realiza consultas mas avanzadas
+            </summary>
+            <param name="sqlcomand"></param>
+            <returns name="result"> Retorna MySqlReader</returns>
         </member>
     </members>
 </doc>

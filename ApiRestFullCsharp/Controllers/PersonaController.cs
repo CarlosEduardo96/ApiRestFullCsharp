@@ -9,7 +9,9 @@ using ApiRestFullCsharp.DTOs;
 
 namespace ApiRestFullCsharp.Controllers
 {
-    
+    /// <summary>
+    /// Trae los datos de las personas registradas
+    /// </summary>
     [Route("api/[controller]")]    
     [ApiController]
     public class PersonaController : ControllerBase

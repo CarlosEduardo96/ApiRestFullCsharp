@@ -9,22 +9,52 @@ using ApiRestFullCsharp.InterfacesDTO;
 
 namespace ApiRestFullCsharp.DTOs
 {
-
+    /// <summary>
+    /// Interactua con la tabla Cartera en la base de datos
+    /// </summary>
     public class CarteraDTO : ConectionModel, ICartera
     {
         private MySqlCommand command;
-        private MySqlDataReader reader;
+        private MySqlDataReader reader;       
 
+        /// <summary>
+        /// Elimina el resgitro por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public CarteraModel Delete(int id)
         {
-            throw new NotImplementedException();
+            CarteraModel del = SelectById(id);
+            if (del != null) {
+                Conectar();
+                string sql = "delete from cartera where id_car="+del.id_car;
+                command = new MySqlCommand(sql,conn);
+                command.ExecuteNonQuery();
+                Desconectar();
+            }            
+            return del;
         }
 
-        public CarteraModel Insert(CarteraModel p)
+        /// <summary>
+        /// Inserta el registro en la base de datos
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public CarteraModel Insert(CarteraModel c)
         {
-            throw new NotImplementedException();
+            Conectar();
+            string sql = string.Format("Insert into cartera values(null,{0},'{1}',{2});",
+                c.Pesos,c.TipoMoneda,c.id_p);
+            command = new MySqlCommand(sql,conn);
+            command.ExecuteNonQuery();
+            c.id_car = Convert.ToInt32(command.LastInsertedId);
+            Desconectar();
+            return c;
         }
-
+        /// <summary>
+        /// Selecciona todos los registros
+        /// </summary>
+        /// <returns></returns>
         public List<CarteraModel> SelectAll()
         {
             List<CarteraModel> lista = null;
@@ -49,6 +79,11 @@ namespace ApiRestFullCsharp.DTOs
             return lista;
         }
 
+        /// <summary>
+        /// Busca la cartera por su id en la base de datos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public CarteraModel SelectById(int id)
         {
             CarteraModel select = null;
@@ -71,6 +106,11 @@ namespace ApiRestFullCsharp.DTOs
             return select;
         }
 
+        /// <summary>
+        /// Realiza la consulta por la llave foranea
+        /// </summary>
+        /// <param name="idForeing"></param>
+        /// <returns></returns>
         public CarteraModel SelectByIdForeig(int idForeing)
         {
             CarteraModel select = null;
@@ -95,9 +135,24 @@ namespace ApiRestFullCsharp.DTOs
             return select;
         }
 
-        public CarteraModel Update(CarteraModel p)
+        /// <summary>
+        /// Actualiza el registro en la base de datos
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public CarteraModel Update(CarteraModel c)
         {
-            throw new NotImplementedException();
+            CarteraModel upgrade = SelectById(c.id_car);
+            if (upgrade != null) {
+                Conectar();
+                string sql = string.Format("update cartera set Pesos={0}, TipoMoneda='{1}' where id_car={2};",
+                    c.Pesos,c.TipoMoneda,c.id_car);
+                command = new MySqlCommand(sql,conn);
+                command.ExecuteNonQuery();
+                upgrade = c;
+                Desconectar();
+            }
+            return upgrade;
         }
     }
 }
